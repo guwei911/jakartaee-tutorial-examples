@@ -37,12 +37,12 @@ import javax.security.auth.Subject;
  * of managed connections, which are associated at times with physical ones */
 
 /* Define classes an interfaces for the EIS physical connection */
-@ConnectionDefinition(
-    connectionFactory = ConnectionFactory.class,
-    connectionFactoryImpl = TradeConnectionFactoryImpl.class,
-    connection = Connection.class,
-    connectionImpl = TradeConnectionImpl.class
-)
+//@ConnectionDefinition(
+//    connectionFactory = ConnectionFactory.class,
+//    connectionFactoryImpl = TradeConnectionFactoryImpl.class,
+//    connection = Connection.class,
+//    connectionImpl = TradeConnectionImpl.class
+//)
 public class TradeManagedConnectionFactory implements ManagedConnectionFactory,
                                                       ResourceAdapterAssociation,
                                                       Serializable,

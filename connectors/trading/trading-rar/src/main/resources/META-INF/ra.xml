@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+           http://java.sun.com/xml/ns/j2ee/connector_1_5.xsd"
+	version="1.5">
+	<display-name>trading-rar.rar</display-name>
+	<vendor-name>Java Software</vendor-name>
+	<eis-type>TS EIS</eis-type>
+	<resourceadapter-version>1.0</resourceadapter-version>
+	<resourceadapter>
+		<resourceadapter-class>jakarta.tutorial.trading.rar.TradeResourceAdapter</resourceadapter-class>
+		<config-property>
+			<config-property-name>RAName</config-property-name>
+			<config-property-type>java.lang.String</config-property-type>
+			<config-property-value>TradeResourceAdapter</config-property-value>
+		</config-property>
+		<config-property>
+			<config-property-name>useSecurityMapping</config-property-name>
+			<config-property-type>java.lang.Boolean</config-property-type>
+			<config-property-value>FALSE</config-property-value>
+		</config-property>
+		<outbound-resourceadapter>
+			<connection-definition>
+				<managedconnectionfactory-class>jakarta.tutorial.trading.rar.outbound.TradeManagedConnectionFactory</managedconnectionfactory-class>
+				<config-property>
+					<config-property-name>host</config-property-name>
+					<config-property-type>java.lang.String</config-property-type>
+					<config-property-value>localhost</config-property-value>
+				</config-property>
+				<config-property>
+					<config-property-name>port</config-property-name>
+					<config-property-type>java.lang.String</config-property-type>
+					<config-property-value>4004</config-property-value>
+				</config-property>
+				<connectionfactory-interface>jakarta.tutorial.trading.rar.api.TradeConnectionFactory</connectionfactory-interface>
+				<connectionfactory-impl-class>jakarta.tutorial.trading.rar.outbound.TradeConnectionFactoryImpl</connectionfactory-impl-class>
+				<connection-interface>jakarta.tutorial.trading.rar.api.TradeConnection</connection-interface>
+				<connection-impl-class>jakarta.tutorial.trading.rar.outbound.TradeConnectionImpl</connection-impl-class>
+			</connection-definition>
+			<transaction-support>NoTransaction</transaction-support>
+			<authentication-mechanism>
+				<authentication-mechanism-type>BasicPassword</authentication-mechanism-type>
+				<credential-interface>javax.resource.spi.security.PasswordCredential</credential-interface>
+			</authentication-mechanism>
+			<reauthentication-support>false</reauthentication-support>
+		</outbound-resourceadapter>
+	</resourceadapter>
+</connector>

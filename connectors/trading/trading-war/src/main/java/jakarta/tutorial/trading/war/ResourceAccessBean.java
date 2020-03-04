@@ -12,11 +12,7 @@ package jakarta.tutorial.trading.war;
 
 import java.io.Serializable;
 import java.util.logging.Logger;
-import jakarta.tutorial.trading.rar.api.TradeConnection;
-import jakarta.tutorial.trading.rar.api.TradeConnectionFactory;
-import jakarta.tutorial.trading.rar.api.TradeOrder;
-import jakarta.tutorial.trading.rar.api.TradeProcessingException;
-import jakarta.tutorial.trading.rar.api.TradeResponse;
+
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -24,14 +20,22 @@ import javax.resource.ConnectionFactoryDefinition;
 import javax.resource.ResourceException;
 import javax.resource.spi.TransactionSupport;
 
+import jakarta.tutorial.trading.rar.api.TradeConnection;
+import jakarta.tutorial.trading.rar.api.TradeConnectionFactory;
+import jakarta.tutorial.trading.rar.api.TradeOrder;
+import jakarta.tutorial.trading.rar.api.TradeProcessingException;
+import jakarta.tutorial.trading.rar.api.TradeResponse;
+
 /* Managed bean for JSF pages that uses the RA Common Client Interface (CCI)
  * to submit trades to the EIS. */
 @Named
+//@ManagedBean
 @SessionScoped
 @ConnectionFactoryDefinition(
     name = "java:comp/env/eis/TradeConnectionFactory",
     interfaceName = "jakarta.tutorial.trading.rar.api.TradeConnectionFactory",
     resourceAdapter = "#trading-rar",
+//    resourceAdapter = "trading-rar",
     minPoolSize = 5,
     transactionSupport = 
             TransactionSupport.TransactionSupportLevel.NoTransaction
@@ -42,6 +46,7 @@ public class ResourceAccessBean implements Serializable {
     private static final Logger log = Logger.getLogger("TradeBean");
     
     @Resource(lookup = "java:comp/env/eis/TradeConnectionFactory")
+//    @Resource(lookup = "java:global/env/eis/TradeConnectionFactory")
     private TradeConnectionFactory connectionFactory;
     
     private TradeConnection connection = null;

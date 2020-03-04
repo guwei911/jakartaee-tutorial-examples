@@ -20,11 +20,11 @@ import javax.resource.spi.ResourceAdapterInternalException;
 import javax.resource.spi.endpoint.MessageEndpointFactory;
 import javax.transaction.xa.XAResource;
 
-@Connector(
-        displayName = "TradeResourceAdapter",
-        vendorName = "Java EE Tutorial", 
-        version = "7.0"
-)
+//@Connector(
+//        displayName = "TradeResourceAdapter",
+//        vendorName = "Java EE Tutorial", 
+//        version = "7.0"
+//)
 public class TradeResourceAdapter implements ResourceAdapter {
    
     private static final Logger log = Logger.getLogger("TradeResourceAdapter");
